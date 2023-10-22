@@ -34,6 +34,7 @@ public class Main {
                 insertBookDetails(session,3,"cansenem","jaan","fiction",1997);
                 readTableData(session);
             }
+
         });
 
         session.getTransaction().commit();
