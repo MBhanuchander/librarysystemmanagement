@@ -31,8 +31,9 @@ public class Main {
             @Override
             public void execute(Connection connection) throws SQLException {
                 System.out.println("db start");
-                insertBookDetails(session,3,"cansenem","jaan","fiction",1997);
+                insertBookDetails(session,5,"cansenem","jaan","fiction",1997);
                 readTableData(session);
+                updateBookDetails(session,1, "book1");
             }
         });
 
@@ -50,6 +51,15 @@ public class Main {
             session.beginTransaction();
 //         Here we have used insert data into db
             session.save(emp);
+
+    }
+    static void updateBookDetails(Session session, int isbn, String title)
+    {
+        Book emp = new Book();
+        emp.setIsbn(isbn);
+        emp.setTitle(title);
+//         Here we have used insert data into db
+        session.update(emp);
 
     }
 
