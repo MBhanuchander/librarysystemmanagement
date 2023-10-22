@@ -17,7 +17,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 // Create Configuration
-        Configuration configuration = new Configuration();
+       try{ Configuration configuration = new Configuration();
         configuration.configure("hibernate.config.xml");
         configuration.addAnnotatedClass(Book.class);
 
@@ -38,18 +38,18 @@ public class Main {
 
         session.getTransaction().commit();
         session.close();
-    }
+    } catch(Exception e){e.printStackTrace();}}
 
     static void insertBookDetails(Session session, int isbn, String title, String author, String genre, int publicationyear)
-    {
-        Book emp = new Book();
-        emp.setIsbn(isbn);
-        emp.setTitle(title);
-        emp.setAuthor(author);
-        emp.setGenre(genre);
-        session.beginTransaction();
+        {
+            Book emp = new Book();
+            emp.setIsbn(isbn);
+            emp.setTitle(title);
+            emp.setAuthor(author);
+            emp.setGenre(genre);
+            session.beginTransaction();
 //         Here we have used insert data into db
-        session.save(emp);
+            session.save(emp);
 
     }
 
